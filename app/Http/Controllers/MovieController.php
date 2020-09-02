@@ -15,6 +15,7 @@ class MovieController extends Controller
     public function index()
     {
       $movies = Movie::all();
+      $cacca = 'cacca';
       dd($movies);
 
     }
