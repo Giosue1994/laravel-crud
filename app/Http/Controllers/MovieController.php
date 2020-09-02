@@ -15,9 +15,10 @@ class MovieController extends Controller
     public function index()
     {
       $movies = Movie::all();
-      $cacca = 'cacca';
-      dd($movies);
 
+      //* // return view('movies', ['movies' => $movies]);
+      //*
+        return view('movies', compact('movies')); // <--- forma semplificata
     }
 
     /**
@@ -47,9 +48,20 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Movie $movie) // <--- forma semplificata
     {
-        //
+        ////* fanno la stessa cosa <--- mostra la pagina in base all'id
+        //*
+        //*  // $movie = Movie::find($id);
+        //*
+        //*  // $movies = Movie::where('id', $id)->first();
+
+        //// in caso di show($id)
+        // if (empty($movie)) { // <--- mostra l'errore 404 n pagina
+        //   abort(404);
+        // }
+
+        return view('show', compact('movie'));
     }
 
     /**
